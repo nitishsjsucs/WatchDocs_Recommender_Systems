@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* iOS Safe Area Insets */
+    --inset-t: env(safe-area-inset-top);
+    --inset-b: env(safe-area-inset-bottom);
+    --inset-l: env(safe-area-inset-left);
+    --inset-r: env(safe-area-inset-right);
+    
+    /* Updated to modern black and white color scheme */
+    --background: oklch(1 0 0); /* Pure white background */
+    --foreground: oklch(0.15 0 0); /* Deep black text */
+    --card: oklch(0.98 0 0); /* Very light gray for cards */
+    --card-foreground: oklch(0.15 0 0); /* Deep black text on cards */
+    --popover: oklch(1 0 0); /* White popover background */
+    --popover-foreground: oklch(0.15 0 0); /* Deep black popover text */
+    --primary: oklch(0.15 0 0); /* Black primary */
+    --primary-foreground: oklch(1 0 0); /* White text on primary */
+    --secondary: oklch(0.96 0 0); /* Light gray secondary */
+    --secondary-foreground: oklch(0.15 0 0); /* Deep black secondary text */
+    --muted: oklch(0.96 0 0); /* Light gray muted */
+    --muted-foreground: oklch(0.45 0 0); /* Medium gray muted text */
+    --accent: oklch(0.15 0 0); /* Black accent */
+    --accent-foreground: oklch(1 0 0); /* White accent text */
+    --destructive: oklch(0.577 0.245 27.325);
+    --destructive-foreground: oklch(1 0 0);
+    --border: oklch(0.92 0 0); /* Light border */
+    --input: oklch(0.98 0 0); /* Very light gray input background */
+    --ring: oklch(0.15 0 0 / 0.2); /* Black focus ring with transparency */
+    --radius: 0.75rem; /* Increased radius for modern look */
+  }
+
+  .dark {
+    /* Updated dark mode to use true black and white contrast */
+    --background: oklch(0.05 0 0); /* Near black background */
+    --foreground: oklch(0.98 0 0); /* Near white text */
+    --card: oklch(0.08 0 0); /* Dark gray cards */
+    --card-foreground: oklch(0.98 0 0); /* Near white card text */
+    --popover: oklch(0.05 0 0); /* Near black popover */
+    --popover-foreground: oklch(0.98 0 0); /* Near white popover text */
+    --primary: oklch(0.98 0 0); /* White primary */
+    --primary-foreground: oklch(0.05 0 0); /* Black text on primary */
+    --secondary: oklch(0.12 0 0); /* Dark gray secondary */
+    --secondary-foreground: oklch(0.98 0 0); /* Near white secondary text */
+    --muted: oklch(0.12 0 0); /* Dark gray muted */
+    --muted-foreground: oklch(0.65 0 0); /* Medium gray muted text */
+    --accent: oklch(0.98 0 0); /* White accent */
+    --accent-foreground: oklch(0.05 0 0); /* Black accent text */
+    --destructive: oklch(0.396 0.141 25.723);
+    --destructive-foreground: oklch(0.637 0.237 25.331);
+    --border: oklch(0.15 0 0); /* Dark border */
+    --input: oklch(0.12 0 0); /* Dark input background */
+    --ring: oklch(0.98 0 0 / 0.2); /* White focus ring with transparency */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Added custom animations for smooth transitions */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-slide-down {
+  animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Added modern hover and focus states */
+.modern-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modern-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px oklch(0.15 0 0 / 0.12), 0 4px 12px oklch(0.15 0 0 / 0.08);
+}
+
+.glass-effect {
+  backdrop-filter: blur(16px);
+  background: oklch(1 0 0 / 0.95);
+  border: 1px solid oklch(0.92 0 0 / 0.8);
+}
+
+.dark .glass-effect {
+  background: oklch(0.05 0 0 / 0.95);
+  border: 1px solid oklch(0.15 0 0 / 0.8);
+}
+
+/* Professional gradient effects */
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, oklch(1 0 0 / 0.95) 0%, oklch(0.98 0 0 / 0.95) 100%);
+  border: 2px solid transparent;
+}
+
+.gradient-border:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(135deg, oklch(0.92 0 0) 0%, oklch(0.88 0 0) 50%, oklch(0.92 0 0) 100%);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
